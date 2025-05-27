@@ -15,6 +15,10 @@ export default function Login({navigation}) {
   {
     navigation.navigate("CriarConta")
   }
+  function handleHome()
+  {
+    navigation.navigate("Home")
+  }
   return (
     
     <View style={styles.container}>
@@ -27,11 +31,14 @@ export default function Login({navigation}) {
       <TextInput style={styles.input} placeholder="Digite sua senha:" />
       
       <TouchableOpacity style={styles.button} onPress={handleHome}>
-      <Text style={styles.textButton}>Acessar</Text>
+        <Text style={styles.textButton}>Acessar</Text>
       </TouchableOpacity>
   
  <Text style={styles.text2}>Não tem uma conta? </Text>
-<TouchableOpacity style={styles.button} onPress={handleCadastro}>Clique aqui!</TouchableOpacity>
+ <TouchableOpacity style={styles.button} onPress={handleCadastro}>
+  <Text style={styles.textButton}>Clique aqui!</Text>
+</TouchableOpacity>
+
       </View>
    
   );
