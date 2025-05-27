@@ -26,8 +26,8 @@ export default function Login({navigation}) {
       <TextInput style={styles.input} placeholder="Digite seu email:" />
       <TextInput style={styles.input} placeholder="Digite sua senha:" />
       
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.textButton}>Acessar</Text>
+      <TouchableOpacity style={styles.button} onPress={handleHome}>
+      <Text style={styles.textButton}>Acessar</Text>
       </TouchableOpacity>
   
  <Text style={styles.text2}>Não tem uma conta? </Text>
