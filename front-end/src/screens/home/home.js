@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { BarChart } from 'react-native-chart-kit';
-export default function Home() {
+export default function Home({ navigation }) {
   // Sample data for the bar chart
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -61,13 +61,18 @@ return (
         style={{ marginVertical: 8, borderRadius: 16 }}
       />
       {/* Icons at the bottom can be added here */}
+      <View style={styles.bottomBar}>
+        <TouchableOpacity onPress={() => navigation.navigate('Sobre')}>
+          <Text style={styles.bottomBarText}> Sobre</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 20,
     backgroundColor: '#F5F5F5',
@@ -103,5 +108,18 @@ const styles = StyleSheet.create({
   },
   saldo: {
     backgroundColor: '#16ff00',
-  }
+  },
+  bottomBar: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: 50,
+    backgroundColor: '#333',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bottomBarText: {
+    color: '#fff',
+    fontSize: 16,
+  },
 });

@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function SobreProjeto() {
+export default function Sobre() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
-        Este aplicativo foi desenvolvido por alunos da ETEC, turma do 3º ano do curso de Desenvolvimento de Sistemas (3DS), como parte do Trabalho de Conclusão de Curso (TCC).
+      <Text style={styles.texto}>
+        Este aplicativo foi desenvolvido por alunos da ETEC Ulysses Silveira Guimarães como parte do projeto do curso técnico.
       </Text>
     </View>
   );
@@ -14,15 +14,16 @@ export default function SobreProjeto() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 30,
-    backgroundColor: '#f0f0f0',
+    padding: 20,
   },
-  text: {
+  texto: {
     fontSize: 18,
     textAlign: 'center',
-    color: '#333',
+    color: '#333333',
     lineHeight: 28,
+    fontWeight: '500',
   },
 });
