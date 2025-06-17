@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using API_POUPAPORCO.DAO;
+using API_POUPAPORCO.DTO;
 using API_POUPAPORCO.MODEL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,23 @@ namespace API_POUPAPORCO.Controller
 
             return Ok(usuarios);
         }
+        [HttpPost("login")]
+        public IActionResult EfetuarLogin([FromForm] UsuarioDTO usuarioDTO)
+        {
+            try
+            {
+                var dao = new UsuarioDAO();
+                var usuarioRetornado = dao.Login(usuarioDTO.nome, usuarioDTO.senha);
+                if (usuarioRetornado == null)
+                {
+                    return StatusCode(401, new { erro = "Email ou senha inválidos" });
+                }
+                return StatusCode(200, new { mensagem = "Autenticado com sucesso!" });
+            }
+            catch (Exception error)
+            {
+                return StatusCode(401, new { erro = error.Message.ToString() });
+            }
+        }
     }
 }
-   

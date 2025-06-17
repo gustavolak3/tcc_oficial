@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "duXE+m335GE=",
+  "dgSpecHash": "voUW32Ihw7Q=",
   "success": true,
-  "projectFilePath": "C:\\tcc_01\\backend\\WebApplication1\\API_POUPAPORCO.csproj",
+  "projectFilePath": "C:\\tcc-01\\tcc_oficial\\backend\\WebApplication1\\API_POUPAPORCO.csproj",
   "expectedPackageFiles": [
     "D:\\home\\gustavo_24219\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "D:\\home\\gustavo_24219\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",

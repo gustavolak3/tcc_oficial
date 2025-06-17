@@ -1,6 +1,7 @@
 ﻿using API_POUPAPORCO.MODEL;
 
 using Dapper;
+using Org.BouncyCastle.Crypto.Digests;
 
 namespace API_POUPAPORCO.DAO
 {
@@ -45,5 +46,16 @@ namespace API_POUPAPORCO.DAO
             return conexao.Query<Usuario>(sql);
         }
         #endregion
+        public Usuario? Login(string nome, string senha)
+        {
+            //1 passo - Abrir a conexão    
+            using var conexao = ConnectionFactory.Build();
+            //2 passo - Criar o comando SQL
+            var sql = "SELECT * FROM usuario WHERE nome = @nome AND senha = @senha";
+            //3 passo - Executar o comando SQL
+            var usuario = conexao.QueryFirstOrDefault<Usuario>(sql, new { nome = nome, senha = senha });
+
+            return usuario;
+        }
     }
 }
