@@ -47,7 +47,7 @@ namespace API_POUPAPORCO.Controller
             return Ok(usuarios);
         }
         [HttpPost("login")]
-        public IActionResult EfetuarLogin([FromForm] UsuarioDTO usuarioDTO)
+        public IActionResult EfetuarLogin([FromBody] UsuarioDTO usuarioDTO)
         {
             try
             {
