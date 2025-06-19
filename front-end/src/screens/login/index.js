@@ -1,5 +1,6 @@
 // 1 Passo - Importar o React
-import React from 'react';
+
+import React, { useState } from 'react';
 
 import PoupaporcoLogo from '../../../assets/Poupaporco_logo.png';
 import CriarConta from '../cadastro/cadastro.js';
@@ -9,7 +10,10 @@ import CriarConta from '../cadastro/cadastro.js';
 import { View, Image, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 // 3 Passo - Criar a função que cria tela de Login
-export default function Login({navigation}) {
+export default function Login({navigation}) 
+{
+const [nome, setNome] = useState('');
+const [senha, setSenha] = useState('');
 
   function handleCadastro()
   {
@@ -19,6 +23,32 @@ export default function Login({navigation}) {
   {
     navigation.navigate("Home")
   }
+async function efetuarLogin() {
+  try {
+  const dados = { nome:  nome, senha: senha };
+  const response = await fetch("https://localhost:7043/api/Usuario/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(dados)
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Login bem-sucedido:", data);
+      navigation.navigate("Home");
+    }
+    else {
+      alert("Erro ao efetuar login. Verifique suas credenciais.", dados);
+    }
+  }
+ catch (error) {
+    console.error('Erro ao efetuar login:', error);
+  }
+  }
+ 
+
   return (
     
     <View style={styles.container}>
@@ -27,10 +57,10 @@ export default function Login({navigation}) {
     
       <Text style={styles.title}>Login</Text>
       
-      <TextInput style={styles.input} placeholder="Digite seu email:" />
-      <TextInput style={styles.input} placeholder="Digite sua senha:" />
+      <TextInput style={styles.input} placeholder="Digite seu email:" onChangeText={setNome} />
+      <TextInput style={styles.input} placeholder="Digite sua senha:"  onChangeText={setSenha} />
       
-      <TouchableOpacity style={styles.button} onPress={handleHome}>
+      <TouchableOpacity style={styles.button} onPress={efetuarLogin}>
         <Text style={styles.textButton}>Acessar</Text>
       </TouchableOpacity>
   
@@ -42,8 +72,8 @@ export default function Login({navigation}) {
       </View>
    
   );
-}
 
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -118,4 +148,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     
   }
-});
+}
+);
+  
